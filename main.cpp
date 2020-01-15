@@ -8,6 +8,7 @@ using namespace std;
 
 int main(){
 	try{
+		clean();
 		Node L1, L2;
 		char a;
 		cout << "Enter L1 in one line" << endl;
@@ -17,7 +18,7 @@ int main(){
 			if(cin.fail()) throw 0;
 			cin.get(a);
 		}
-		system("cls");
+		clean();
 		cout << "Enter L2 in one line" << endl;
 		cin.get(a);
 		while(a != '\n'){
@@ -26,7 +27,7 @@ int main(){
 			cin.get(a);
 		}
 		while(true){
-			system("cls");
+			clean();
 			cout << "1. Append L2 to L1" << endl <<
 			"2. Insert L2 in L1 after some symbol" << endl <<
 			"3. Reverse L1" << endl << 
@@ -42,11 +43,11 @@ int main(){
 				default: cout << "Error, invalid option" << endl; break;
 				case 1: append(L1.pNext,L2.pNext); cout << "Appended sucsessfully" << endl; break;
 				case 2: 
-					system("cls");
+					clean();
 					cout << "Enter E to insert L2 after: ";
 					TE E;
 					cin >> E;
-					system("cls");
+					clean();
 					if(cin.fail()) throw 0;
 					insert(L1.pNext,L2.pNext,E); cout << "Inserted sucsessfully" << endl; break;
 				case 3:
@@ -56,7 +57,7 @@ int main(){
 					nox(&L1);
 					cout << "Action completed sucsessfully" << endl; break;
 				case 5:
-					system("cls");
+					clean();
 					cout << "Choose which one list to write (it will overwrite the old file)" << endl
 					<< "Write list L";
 					int l;
@@ -74,7 +75,7 @@ int main(){
 					break;
 				case 99: return 0;
 			}
-			system("pause");
+			pause();
 		}
 	}
 	catch(int a){

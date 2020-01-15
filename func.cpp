@@ -2,6 +2,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <fstream>
+#include <limits>
 
 using namespace std;
 
@@ -20,157 +21,6 @@ void reverse(Node *&head, Node *&current)
     head = pred;
 }
 
-
-/*
-
-Node *reverse(Node *lp)
-{
-    Node *cur, *prev, *tmp;
- 
-    prev = NULL;
-    for(cur = lp; cur != NULL; prev = cur, cur = tmp) {
-        tmp = cur->pNext;
-        cur->pNext = prev;
-    }
-    return prev;
-}
-
-
-void reverse(Node* head){
-	Node* current = head->pNext;
-    head->pNext = nullptr;
-    while (current != nullptr)
-    {
-		Node *next = current->pNext;
-		current->pNext = head->pNext;
-		head->pNext = current;
-		current = next;
-    }
-    
-}
-
-void reverse(Node* L1){
-	Node* prev=L1;
-	Node* lastrev;
-	Node* lastnonrev = L1;
-	while(lastnonrev->pNext->pNext!=nullptr){
-		lastnonrev=lastnonrev->pNext;
-	}
-	Node* last = lastnonrev->pNext;
-	lastnonrev->pNext->pNext=lastnonrev;
-	lastrev=lastnonrev->pNext->pNext;
-	while(lastnonrev!=L1){
-	while(prev->pNext!=lastnonrev){
-		prev=prev->pNext;
-	}
-	lastnonrev->pNext=prev;
-	lastrev=lastnonrev;
-	lastnonrev=prev;
-	prev=L1;
-	}
-	L1->pNext->pNext=L1;
-	L1->pNext=nullptr;
-	*L1=*last;
-}
-
-
-Node reverse(Node* L1){
-	Node* last;
-	TE waslast;
-	Node* prelast;
-	Node* lastch;
-	Node* curr=L1;
-	while(curr->pNext!=nullptr){
-		prelast = curr;
-		curr=curr->pNext;
-	}
-	last = curr;
-	curr->pNext = prelast;
-	lastch = curr;
-	curr=L1;
-	while(prelast->pNext!=L1){
-		while(curr->pNext!=lastch){
-			prelast = curr;
-			curr = curr->pNext;
-		}
-		curr->pNext = prelast;
-		lastch=curr;
-		curr = L1;
-	}
-	L1->pNext->pNext = L1;
-	L1->pNext=nullptr;
-	Node tmp (last->data, last->pNext);
-	return tmp;
-}
-
-
-Node reverse(Node* L1){
-	Node* p = nullptr;
-	Node* n = nullptr;
-	Node* h = L1;
-	for(; h; ) {
-		n = h->pNext;
-		h->pNext = p;
-		p = h;
-		h = n;
-	}
-	return *p;
-}
-
-
-void reverse(Node* head){
-	Node* new_head = head->pNext;
-	Node* temp = head;
-	temp->pNext = nullptr;
-	Node* prev = nullptr;
-	while(new_head->pNext){
-		prev = new_head;
-		new_head = new_head->pNext;
-		prev->pNext = temp;
-		temp = prev;
-	}
-	new_head->pNext = prev;
-	head = new_head;
-}
-
-int count(Node* L1){
-	int cnt=0;
-	while(L1!=nullptr){
-		cnt++;
-		L1=L1->pNext;
-	}
-	return cnt;
-}
-
-
-void reverse(Node* L1){
-	int a = count(L1);
-	Node* list [a];
-	Node* l1 = L1->pNext;
-	for(int i=0; l1!=nullptr; i++){
-		list[i]=l1;
-		l1=l1->pNext;
-	}
-	for(int i=a-1; L1!=nullptr; i--){
-		L1->pNext=list[i];
-		L1=L1->pNext;
-	}
-}
-
-
-Node reverse(Node* head){
-	Node* p = nullptr;
-	Node* n = nullptr;
-	Node* h = head;
-	for(; h; ) {
-		n = h->pNext;
-		h->pNext = p;
-		p = h;
-		h = n;
-	}
-	return *p;
-} 
-*/
 
 void nox(Node* L1){
 	TE a = L1->data;
@@ -244,7 +94,7 @@ void printList(Node* L1){
 }
 
 void writeList(Node* L1){
-	system("cls");
+	clean();
 	char a[100];
 	cout << "Enter new file name: ";
 	cin >> a;
@@ -257,4 +107,24 @@ void writeList(Node* L1){
 	}
 	out << L1->data;
 	out.close();
+}
+
+void clean(){
+	#ifdef _WIN32
+	system("cls");
+	#endif
+	#ifdef linux
+	system("clear");
+	#endif
+}
+
+void pause(){
+	#ifdef _WIN32
+	system("pause");
+	#endif
+	#ifdef linux
+	cout << endl << "Press enter to countinue";
+	cin.ignore(numeric_limits<streamsize>::max(), '\n');
+	cin.get();
+	#endif
 }

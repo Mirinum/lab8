@@ -22,6 +22,7 @@ void insert(Node* L1, Node* L2, TE E);
 void reverse(Node *&head, Node *&current);
 void nox(Node* L1);
 void writeList(Node* L1);
-
+void clean();
+void pause();
 
 #endif
